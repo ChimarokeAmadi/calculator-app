@@ -10,36 +10,42 @@ function App() {
 
 	const calculate = (event) => {
 		const button = event.target.id;
-
+		const operators = ["-", "+", "÷", "×"];
 		if (button == "clear") {
 			setOutputDisplay("0");
 			setInputDisplay("0");
 		} else if (button == "equals") {
 			setInputDisplay("0");
 			setOutputDisplay(eval(outputDisplay));
-		} else if (
-			button == "divide" ||
-			button == "add" ||
-			button == "multiply" ||
-			button == "subtract"
-		) {
+		} else if (button == "subtract") {
+			setOutputDisplay(event.target.innerHTML);
 			if (inputDisplay[inputDisplay.length - 1] != event.target.innerHTML) {
-				if (
-					inputDisplay[inputDisplay.length - 1] == "-" ||
-					inputDisplay[inputDisplay.length - 1] == "+" ||
-					inputDisplay[inputDisplay.length - 1] == "÷" ||
-					inputDisplay[inputDisplay.length - 1] == "×"
-				) {
-					setInputDisplay(inputDisplay.slice(0, -1) + event.target.innerHTML);
+				if (operators.includes(inputDisplay[inputDisplay.length - 1])) {
+					if (operators.includes(inputDisplay[inputDisplay.length - 2])) {
+						setInputDisplay(inputDisplay.slice(0, -2) + event.target.innerHTML);
+					} else {
+						setInputDisplay(inputDisplay.slice(0, -1) + event.target.innerHTML);
+					}
 				} else {
 					setInputDisplay(inputDisplay + event.target.innerHTML);
 				}
+			}
+		} else if (button == "add" || button == "multiply" || button == "divide") {
+			setOutputDisplay(event.target.innerHTML);
+			if (operators.includes(inputDisplay[inputDisplay.length - 1])) {
+				if (operators.includes(inputDisplay[inputDisplay.length - 2])) {
+					setInputDisplay(inputDisplay.slice(0, -2) + event.target.innerHTML);
+				} else {
+					setInputDisplay(inputDisplay.slice(0, -1) + event.target.innerHTML);
+				}
+			} else {
+				setInputDisplay(inputDisplay + event.target.innerHTML);
 			}
 		}
 	};
 
 	return (
-		<div className='container mx-auto h-[1024px] w-[768px] bg-background flex flex-col items-center pt-[359px] font-work'>
+		<div className='container mt-10 mx-auto h-[1024px] w-[768px] bg-background flex flex-col items-center pt-[359px] font-work'>
 			<div className='w-[728px] flex flex-col gap-4'>
 				<div className='output w-full text-right text-light-grey text-[40px] leading-[46.92px]'>
 					{inputDisplay}
@@ -76,7 +82,7 @@ function App() {
 					<NumberButton content='4' id='four' onClick={calculate} />
 					<NumberButton content='5' id='five' onClick={calculate} />
 					<NumberButton content='6' id='six' onClick={calculate} />
-					<BlueButton content='–' id='subtract' onClick={calculate} />
+					<BlueButton content='-' id='subtract' onClick={calculate} />
 					<NumberButton content='1' id='one' onClick={calculate} />
 					<NumberButton content='2' id='two' onClick={calculate} />
 					<NumberButton content='3' id='three' onClick={calculate} />
