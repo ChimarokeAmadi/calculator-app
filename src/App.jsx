@@ -41,6 +41,19 @@ function App() {
 			} else {
 				setInputDisplay(inputDisplay + event.target.innerHTML);
 			}
+		} else if (
+			outputDisplay == "+" ||
+			outputDisplay == "-" ||
+			outputDisplay == "×" ||
+			outputDisplay == "÷"
+		) {
+			if (button == "decimal") {
+				setOutputDisplay("0" + event.target.innerHTML);
+				setInputDisplay(inputDisplay + "0" + event.target.innerHTML);
+			} else {
+				setOutputDisplay(event.target.innerHTML);
+				setInputDisplay(inputDisplay + event.target.innerHTML);
+			}
 		}
 	};
 
