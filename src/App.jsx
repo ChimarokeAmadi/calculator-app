@@ -3,6 +3,7 @@ import "./App.css";
 import BlueButton from "./components/bluebuttons/blueButton";
 import LightGreyButton from "./components/lightGreyButtons/lightGreyButton";
 import NumberButton from "./components/numberButton/numberButton";
+import ToggleButton from "./components/toggleButton/ToggleButton";
 
 function App() {
 	const [outputDisplay, setOutputDisplay] = useState("0");
@@ -16,7 +17,11 @@ function App() {
 			setInputDisplay("0");
 		} else if (button == "equals") {
 			setInputDisplay("0");
-			setOutputDisplay(eval(outputDisplay));
+			setOutputDisplay(
+				eval(inputDisplay.replace(/×/g, "*").replace(/÷/g, "/"))
+					.toString()
+					.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+			);
 		} else if (button == "subtract") {
 			setOutputDisplay(event.target.innerHTML);
 			if (inputDisplay[inputDisplay.length - 1] != event.target.innerHTML) {
@@ -41,12 +46,7 @@ function App() {
 			} else {
 				setInputDisplay(inputDisplay + event.target.innerHTML);
 			}
-		} else if (
-			outputDisplay == "+" ||
-			outputDisplay == "-" ||
-			outputDisplay == "×" ||
-			outputDisplay == "÷"
-		) {
+		} else if (operators.includes(outputDisplay)) {
 			if (button == "decimal") {
 				setOutputDisplay("0" + event.target.innerHTML);
 				setInputDisplay(inputDisplay + "0" + event.target.innerHTML);
@@ -54,11 +54,30 @@ function App() {
 				setOutputDisplay(event.target.innerHTML);
 				setInputDisplay(inputDisplay + event.target.innerHTML);
 			}
+		} else if (outputDisplay == "0" && button != "decimal") {
+			setOutputDisplay(event.target.innerHTML);
+			if (inputDisplay == "0") {
+				setInputDisplay(event.target.innerHTML);
+			} else {
+				setInputDisplay(inputDisplay + event.target.innerHTML);
+			}
+		} else if (button == "decimal") {
+			if (outputDisplay.includes(".")) {
+				return;
+			}
+			setOutputDisplay(outputDisplay + event.target.innerHTML);
+			setInputDisplay(inputDisplay + event.target.innerHTML);
+		} else if (button != "decimal" && !operators.includes(outputDisplay)) {
+			setOutputDisplay(outputDisplay + event.target.innerHTML);
+			setInputDisplay(inputDisplay + event.target.innerHTML);
 		}
 	};
 
 	return (
-		<div className='container mt-10 mx-auto h-[1024px] w-[768px] bg-background flex flex-col items-center pt-[359px] font-work'>
+		<div className='container mt-10 mx-auto h-[1024px] w-[768px] bg-background flex flex-col items-center pt-[60px] font-work'>
+			<div className='mb-[267px]'>
+				<ToggleButton />
+			</div>
 			<div className='w-[728px] flex flex-col gap-4'>
 				<div className='output w-full text-right text-light-grey text-[40px] leading-[46.92px]'>
 					{inputDisplay}

@@ -5,7 +5,7 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}"
   ],
 
-  darkMode: ['selector', '[data-mode="dark"]'],
+  darkMode: 'selector',
 
   theme: {
     extend: {
