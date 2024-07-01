@@ -39,19 +39,8 @@
 	z-index: 2;
 }
 
-/* .slider::after {
-	position: absolute;
-	content: url("/public/assets/images/Union.png");
-	top: 6px;
-	left: 47px;
-} */
-
 input:checked + .slider {
 	background-color: #ffffff;
-}
-
-input:focus + .slider {
-	box-shadow: 0 0 1px #2e2f38;
 }
 
 input:checked + .slider:before {

@@ -2,23 +2,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-	--background: #f1f2f3;
-	--blue-color: #4b5efc;
-	--btn: #ffffff;
-	--light-grey: #d2d3da;
-	--text-color: "#000000";
-}
-
-[data-theme="dark"] {
-	--background: #17171c;
-	--blue-color: #4b5efc;
-	--btn: #2e2f38;
-	--light-grey: #4e505f;
-	--text-color: "#FFFFFF";
-}
-
-/* .dark\:underline:where([data-mode="dark"], [data-mode="dark"] *) {
-	text-decoration-line: underline;
-} */
