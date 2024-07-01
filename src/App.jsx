@@ -74,8 +74,8 @@ function App() {
 	};
 
 	return (
-		<div className='container mt-10 mx-auto h-[1024px] w-[768px] bg-background flex flex-col items-center pt-[60px] font-work'>
-			<div className='mb-[267px]'>
+		<div className='container mt-10 mx-auto h-[1024px] w-[768px] bg-background flex flex-col items-center pt-[60px] font-work '>
+			<div className='mb-[267px] relative'>
 				<ToggleButton />
 			</div>
 			<div className='w-[728px] flex flex-col gap-4'>
