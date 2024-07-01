@@ -33,11 +33,18 @@
 	width: 24px;
 	left: 4px;
 	top: 4px;
-	background-color: #4e505f;
+	/* background-color: #4e505f; */
 	-webkit-transition: 0.4s;
 	transition: 0.4s;
 	z-index: 2;
 }
+
+/* .slider::after {
+	position: absolute;
+	content: url("/public/assets/images/Union.png");
+	top: 6px;
+	left: 47px;
+} */
 
 input:checked + .slider {
 	background-color: #ffffff;
