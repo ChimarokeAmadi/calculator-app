@@ -1,4 +1,5 @@
-import { useState } from "react";
+"use client";
+import { useEffect, useState } from "react";
 import "./App.css";
 import BlueButton from "./components/bluebuttons/blueButton";
 import LightGreyButton from "./components/lightGreyButtons/lightGreyButton";
@@ -8,7 +9,22 @@ import ToggleButton from "./components/toggleButton/ToggleButton";
 function App() {
 	const [outputDisplay, setOutputDisplay] = useState("0");
 	const [inputDisplay, setInputDisplay] = useState("0");
-	const [darkMode, setDarkMode] = useState(false);
+	const [darkMode, setDarkMode] = useState(undefined);
+
+	useEffect(() => {
+		const darkModeData = window.localStorage.getItem("CALCULATOR_DARK_MODE");
+		if (darkModeData !== null) setDarkMode(JSON.parse(darkModeData));
+		console.log(darkModeData);
+	}, []);
+
+	useEffect(() => {
+		if (darkMode !== undefined) {
+			window.localStorage.setItem(
+				"CALCULATOR_DARK_MODE",
+				JSON.stringify(darkMode)
+			);
+		}
+	}, [darkMode]);
 
 	const handleToggle = () => {
 		setDarkMode(darkMode ? false : true);
@@ -79,9 +95,11 @@ function App() {
 	};
 
 	return (
-		<div data-mode={darkMode ? "dark" : "light"}>
-			<div className='container  mx-auto h-full px-5 w-full min-[768px]:h-[1024px] min-[768px]:w-[768px] bg-background flex flex-col items-center  pt-[60px] font-work dark:bg-background2 mb-[66px] min-[768px]:mb-[32px]'>
-				<div className='min-[768px]:mb-[267px] mb-[205px] mx-auto flex justify-center w-full'>
+		<div
+			data-mode={darkMode ? "dark" : "light"}
+			className=' dark:bg-background2 bg-background h-full w-full'>
+			<div className='container mx-auto  h-[902px] min-[375px]:h-[750px]  px-5 w-full min-[768px]:h-[1024px] min-[768px]:w-[768px] bg-background flex flex-col justify-between items-center  pt-[15px] min-[768px]:pt-[60px] font-work dark:bg-background2 pb-[66px] min-[390px]:pt-[20px] min-[400px]:h-[916px] min-[390px]:h-[864px] min-[430px]:h-[952px]'>
+				<div className='min-[768px]:mb-[267px] mx-auto flex justify-center w-full'>
 					<ToggleButton onClick={handleToggle} />
 				</div>
 				<div className='min-[768px]:w-[728px] w-full flex flex-col gap-4'>

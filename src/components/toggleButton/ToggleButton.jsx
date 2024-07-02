@@ -5,9 +5,9 @@ const ToggleButton = (props) => {
 	return (
 		<div className='flex justify-center'>
 			<label className='switch '>
-				<input type='checkbox' />
+				<input type='checkbox' className='flex' />
 				<span
-					className='slider  before:bg-light-grey dark:before:bg-light-grey2 round flex items-center justify-between gap-3 py-1 px-2 min-w-fit'
+					className='slider  before:bg-light-grey dark:before:bg-light-grey2 round bg-[#2E2F38] dark:bg-white flex items-center justify-between gap-3 py-1 px-2 min-w-fit'
 					onClick={props.onClick}>
 					<svg
 						width='20'
