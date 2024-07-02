@@ -3,7 +3,7 @@ import "./ToggleButton.css";
 
 const ToggleButton = (props) => {
 	return (
-		<div>
+		<div className='flex justify-center'>
 			<label className='switch '>
 				<input type='checkbox' />
 				<span

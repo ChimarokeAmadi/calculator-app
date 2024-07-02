@@ -80,11 +80,11 @@ function App() {
 
 	return (
 		<div data-mode={darkMode ? "dark" : "light"}>
-			<div className='container mt-10 mx-auto h-[1024px] w-[768px] bg-background flex flex-col items-center pt-[60px] font-work dark:bg-background2'>
-				<div className='mb-[267px] relative'>
+			<div className='container  mx-auto h-full px-5 w-full min-[768px]:h-[1024px] min-[768px]:w-[768px] bg-background flex flex-col items-center  pt-[60px] font-work dark:bg-background2 mb-[66px] min-[768px]:mb-[32px]'>
+				<div className='min-[768px]:mb-[267px] mb-[205px] mx-auto flex justify-center w-full'>
 					<ToggleButton onClick={handleToggle} />
 				</div>
-				<div className='w-[728px] flex flex-col gap-4'>
+				<div className='min-[768px]:w-[728px] w-full flex flex-col gap-4'>
 					<div className='output w-full text-right text-light-grey dark:text-light-grey2 text-[40px] leading-[46.92px]'>
 						{inputDisplay}
 					</div>
@@ -92,10 +92,10 @@ function App() {
 						{outputDisplay}
 					</div>
 
-					<div className='buttons w-[728px] grid grid-cols-[1fr,1fr,1fr,1fr] gap-4'>
+					<div className='buttons mx-auto min-[768px]:w-[728px] w-full grid grid-cols-[1fr,1fr,1fr,1fr] gap-4'>
 						<LightGreyButton content='C' id='clear' onClick={calculate} />
 						<LightGreyButton
-							onClick={calculate}
+							// onClick={calculate}
 							id='positiveNegative'
 							content=<svg
 								width='24'
@@ -111,7 +111,7 @@ function App() {
 								/>
 							</svg>
 						/>
-						<LightGreyButton content='%' id='percent' onClick={calculate} />
+						<LightGreyButton content='%' id='percent' />
 						<BlueButton content='÷' id='divide' onClick={calculate} />
 						<NumberButton content='7' id='seven' onClick={calculate} />
 						<NumberButton content='8' id='eight' onClick={calculate} />
