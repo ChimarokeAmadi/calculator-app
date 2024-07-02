@@ -103,10 +103,10 @@ function App() {
 					<ToggleButton onClick={handleToggle} />
 				</div>
 				<div className='min-[768px]:w-[728px] w-full flex flex-col gap-4'>
-					<div className='output w-full text-right text-light-grey dark:text-light-grey2 text-[40px] leading-[46.92px]'>
+					<div className='output w-full text-right text-light-grey dark:text-light-grey2 text-[40px] leading-[46.92px] break-all'>
 						{inputDisplay}
 					</div>
-					<div className='output w-full text-right text-text dark:text-text2 text-[96px] leading-[96px]'>
+					<div className='output w-full text-right text-text dark:text-text2 text-[96px] leading-[96px] break-all'>
 						{outputDisplay}
 					</div>
 
