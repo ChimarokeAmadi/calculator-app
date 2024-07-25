@@ -10,6 +10,7 @@ function App() {
 	const [outputDisplay, setOutputDisplay] = useState("0");
 	const [inputDisplay, setInputDisplay] = useState("0");
 	const [darkMode, setDarkMode] = useState(undefined);
+	const [isChecked, setIsChecked] = useState(false);
 
 	useEffect(() => {
 		const darkModeData = window.localStorage.getItem("CALCULATOR_DARK_MODE");
@@ -95,10 +96,8 @@ function App() {
 	};
 
 	return (
-		<div
-			data-mode={darkMode ? "dark" : "light"}
-			className=' dark:bg-background2 bg-background h-full w-full'>
-			<div className='container mx-auto  h-[902px] min-[375px]:h-[750px]  px-5 w-full min-[768px]:h-[1024px] min-[768px]:w-[768px] bg-background flex flex-col justify-between items-center  pt-[15px] min-[768px]:pt-[60px] font-work dark:bg-background2 pb-[66px] min-[390px]:pt-[20px] min-[400px]:h-[916px] min-[390px]:h-[864px] min-[430px]:h-[952px]'>
+		<div data-mode={darkMode ? "dark" : "light"} className=' h-full w-full'>
+			<div className='container mx-auto  dark:bg-background2 bg-background h-[902px] min-[375px]:h-[750px]  px-5 w-full min-[768px]:h-[1024px] min-[768px]:w-[768px]  flex flex-col justify-between items-center  pt-[15px] min-[768px]:pt-[60px] font-work  pb-[66px] min-[390px]:pt-[20px] min-[400px]:h-[916px] min-[390px]:h-[864px] min-[430px]:h-[952px]'>
 				<div className='min-[768px]:mb-[267px] mx-auto flex justify-center w-full'>
 					<ToggleButton onClick={handleToggle} />
 				</div>
@@ -146,7 +145,7 @@ function App() {
 						<NumberButton content='.' id='decimal' onClick={calculate} />
 						<NumberButton content='0' id='zero' onClick={calculate} />
 						<NumberButton
-							onClick={calculate}
+							// onClick={calculate}
 							id='delete'
 							content=<svg
 								width='27'
